@@ -28,3 +28,7 @@
 递归删除，删除文件夹内的所有文件
 
 # git rebase
+
+只能往前合并commit, `git log` 显示 commit1,commit2,commit3,commit4
++ 1、`git rebase -i commit4` 或者 `git rebase -i HEAD~4`
++ 2、 
