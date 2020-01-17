@@ -32,6 +32,7 @@
 实例合并4个commit(commit1,commit2,commit3,commit4)
 
 + 1、`git log` 显示 commit1,commit2,commit3,commit4，commit5
+    ![git log](/images/rebase/rebase1.png)
 + 2、`git rebase -i commit5` -i 表示要合并提交的的前一个commit 或者 `git rebase -i HEAD~4`
 + 3、 第二步完成后悔显示所有的commit，进入vi模式进行合并，pick: 执行commit提交,第一个进行pick，其他的commit都改为squash, 
     表示合并压缩到前一个commit,改完后ESC 退出vi模式，:wq保存退出，然后再次进入vi模式提供合并的信息提示，退出vi模式，保存退出即可。
