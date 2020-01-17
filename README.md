@@ -20,8 +20,9 @@
  
  常用命令：
   
-  `git reset commit` ：重置回退到某个commit
-  `git reset origin/分支` ：重置回退到某个远端分支
+  ```git reset commit```：重置回退到某个commit
+  
+  ```git reset origin/分支``` ：重置回退到某个远端分支
   
  
  + --hard：重置位置的同时，直接将 working Tree工作目录、 index 暂存区及 repository 都重置成目标Reset节点的內容,所以效果看起来等同于
