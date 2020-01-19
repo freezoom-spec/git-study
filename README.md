@@ -73,7 +73,7 @@
  `git revert commit`: 返回,想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 `git revert` 命令来反做版本二，生成新的版本四，
     这个版本四里会保留版本三的东西，但撤销了版本二的东西。
    
- ![git log](https://github.com/freezoom-spec/git-study/blob/master/images/reset.jpeg)
+ ![git log](https://github.com/freezoom-spec/git-study/blob/master/images/revert.jpeg)
  
   **适用场景：操作已经提交到远程库**
   
