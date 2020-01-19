@@ -1,7 +1,8 @@
 # 目录
 + [git 命令简介](git-命令简介)
-+ [git rebase ](#git-rebase)
-+ [git reset ](#git-reset)
++ [git rebase](#git-rebase)
++ [git reset](#git-reset)
++ [git revert](#git-revert)
 + [git rm ](#git-rm)
 
 
@@ -14,7 +15,7 @@
 
 `git commit`： 暂存区的目录树写到版本库中，分支会做相应的更新。即分支指向的目录树就是提交时暂存区的目录树。
 
-`git reset HEAD`： 暂存区的目录树会被重写，被分支指向的目录树所替换,**工作区不受影响**。
+`git reset HEAD`： 暂存区的目录树会被重写，被分支指向的目录树所替换,**工作区不受影响**.
     
 `git rm --cached <file>`:  命令时，会直接从暂存区删除文件，**工作区不受影响**。
     
@@ -47,34 +48,39 @@
 
 # git reset
  
+ `git reset`: 回退，修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本。
+ 
+ ![git log](https://github.com/freezoom-spec/git-study/blob/master/images/reset.jpeg)
+ 
  常用命令：
   
-  `git reset commit`：重置回退到某个commit
+  `git reset commit`：回退到某个commit
   
-  `git reset origin/分支` ：重置回退到某个远端分支
+  `git reset origin/分支` ：回退到某个分支
   
+ 三种模式： 
  
- + --hard：重置位置的同时，直接将 working Tree工作目录、 index 暂存区及 repository 都重置成目标Reset节点的內容,所以效果看起来等同于
- 清空暂存区和工作区。
+ + --hard：直接将工作目录、暂存区(index)及版本库(repository)都重置成目标Reset节点的內容。
  
- + --soft：重置位置的同时，保留working Tree工作目录和index暂存区的内容，只让repository中的内容和 reset 目标节点保持一致，
- 因此原节点和reset节点之间的【差异变更集】会放入index暂存区中(Staged files)。所以效果看起来就是工作目录的内容不变，暂存区原有的内容也不变，
- 只是原节点和Reset节点之间的所有差异都会放到暂存区中。
+ + --mixed（默认）：只保留工作目录的內容，但会将暂存区(Index)和版本库中的內容更改和reset目标节点一致。
  
- + --mixed（默认）：重置位置的同时，只保留Working Tree工作目录的內容，但会将 Index暂存区 和 Repository 中的內容更改和reset目标节点一致，
- 因此原节点和Reset节点之间的【差异变更集】会放入Working Tree工作目录中。所以效果看起来就是原节点和Reset节点之间的所有差异都会放到工作目录中。
+ + --soft：保留工作目录和暂存区(index)的内容，只让版本木中的内容和reset目标节点保持一致。
  
+ **适用场景：操作未提交到远程库的撤销操作**
+ 
+# git revert
 
- # git rm 
+ `git revert commit`: 返回,想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 `git revert` 命令来反做版本二，生成新的版本四，
+    这个版本四里会保留版本三的东西，但撤销了版本二的东西。
+   
+ ![git log](https://github.com/freezoom-spec/git-study/blob/master/images/reset.jpeg)
+ 
+  **适用场景：操作已经提交到远程库**
+  
+# git rm 
 
-`git rm --cached “文件路径”` 
+ `git rm --cached “文件路径”` : 将该文件从缓存中删除，不删除物理文件
 
-将该文件从缓存中删除，不删除物理文件
+ `git rm --f “文件路径”`: 将该文件从缓存中删除，还会删除物理文件（不会回收到垃圾桶）
 
-`git rm --f “文件路径”`
-
-将该文件从缓存中删除，还会删除物理文件（不会回收到垃圾桶）
-
-`git rm -r 文件夹`
-
-递归删除，删除文件夹内的所有文件
+ `git rm -r 文件夹`: 递归删除，删除文件夹内的所有文件
