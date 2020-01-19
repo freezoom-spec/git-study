@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form name="twoday">
+    第一个时间：
+    <input type="text" name="y1">年
+    <input type="text" name="m1">月
+    <input type="text" name="d1">日 </br>
+    第二个时间：
+    <input type="text" name="y2">年
+    <input type="text" name="m2">月
+    <input type="text" name="d2">日 </br>
+    <input type="button" onclick="cha()" value="两个时间相差的天数"><br>
+    <input type="text" name="day">
+</form>
+</body>
+<script>
+    function getDaysBetween(dateString1,dateString2){
+        var  startDate = Date.parse(dateString1);
+        var  endDate = Date.parse(dateString2);
+        var days=(endDate - startDate)/(1*24*60*60*1000);
+        // alert(days);
+        return  days;
+    }
+    console.log(getDaysBetween('2018/10/18','2020/3/8'))
+</script>
+</html>
