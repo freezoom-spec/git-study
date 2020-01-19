@@ -14,13 +14,13 @@
 
 `git commit`： 暂存区的目录树写到版本库中，分支会做相应的更新。即分支指向的目录树就是提交时暂存区的目录树。
 
-`git reset HEAD`： 暂存区的目录树会被重写，被分支指向的目录树所替换，但是工作区不受影响。
+`git reset HEAD`： 暂存区的目录树会被重写，被分支指向的目录树所替换,**工作区不受影响**。
     
-`git rm --cached <file>`:  命令时，会直接从暂存区删除文件，工作区则不做出改变。
+`git rm --cached <file>`:  命令时，会直接从暂存区删除文件，**工作区不受影响**。
     
 `git checkout .` 或者 `git checkout -- <file>`: 会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。
     
-`git checkout HEAD .` 或者 `git checkout HEAD <file>`:会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。
+`git checkout HEAD .` 或者 `git checkout HEAD <file>`:会用HEAD指向的分支中的全部或者部分文件替换暂存区和以及工作区中的文件。
 这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。
 
 # git rebase 
